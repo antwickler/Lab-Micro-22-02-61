@@ -14,19 +14,23 @@
 
 .CSEG
 .ORG	0x0000
-		ldi	VAR_B,2
-		ldi	VAR_C,4
-		ldi	ZL,low(TEMP)
-		ldi	ZH,high(TEMP)
+	ldi	VAR_B,2
+	ldi	VAR_C,4
+	ldi	ZL,low(TempA)
+	ldi	ZH,high(TempA)
 
-		mul	VAR_B,VAR_C
-		mov VAR_A,R0
-		st	Z+,VAR_A
+	mul	VAR_B,VAR_C	; a*b
+	mov 	VAR_A,R0
+	st	Z+,VAR_A
+	st	Z+,VAR_B
+	st	Z+,VAR_C
 
 END:	rjmp	END
 
 .DSEG
 .ORG	0x0100
-TEMP: .byte 1
+TempA: .byte 1
+TempB: .byte 1
+TempC: .byte 1
 
 .ESEG
